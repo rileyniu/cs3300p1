@@ -1,15 +1,1 @@
-﻿EventName,Date,PriceOnDate,Price10DaysLater,UpDownUnChanged,PercChange
-South Korea threatens to shut down cryptocurrency exchanges ," December 28, 2017","14606.5","$17,163.38 ",UP,6.84%
-"Bitcoin price hit all time high just below $20,000 "," December 18, 2017","19498.63 ","$16,064.44 ",DOWN,17.61%
-CBOE Bitcoin Futures are launched ," December 11, 2017","16936.8","17010.53 ",UP,16.55%
-"Bitcoin price breaks $10,000 for the first time "," November 28, 2017","9666.23 ","$15,455.75 ",UP,59.89%
-SegWit2X Cancelled ," November 8, 2017","7143.47 ","$7,844.44 ",UP,9.81%
-CME announces to launch Bitcoin futures ," October 31, 2017","6121.79 ","$7,255.21 ",UP,18.51%
-Bitcoin Hardfork: Bitcoin Gold goes live ," October 25, 2017","5682.85 ","$7,261.41 ",UP,27.78%
-"Bitcoin price breaks $5,000 for the first time "," October 13, 2017","5128.05 ","$5,943.06 ",UP,15.89%
-China Is Shutting Down All Bitcoin and Cryptocurrency Exchanges ," September 15, 2017","3606.08 ","$3,714.44 ",UP,3.00%
-China bans companies from raising money through ICOs ," September 3, 2017","4668.50 ","$4,223.82 ",DOWN,9.53%
-"Bitcoin ""splits"" into Bitcoin (BTC) and Bitcoin Cash (BCH)"," August 1, 2017","2787.85 ","$3,383.79 ",UP,21.38%
-Japan Declares Bitcoin as Legel Tender ," April 1, 2017","1085.03 ","$1,215.69 ",UP,12.04%
-SEC denies second Bitcoin ETF application ," March 28, 2017","1044.25 ","$1,190.39 ",UP,13.99%
-SEC denies Winkelvos ETF ," March 10, 2017","1201.86 ","$1,037.85 ",DOWN,13.65%
+﻿EventName,Date,PriceOnDate,Price10DaysLater,UpDownUnChanged,PercChangeSouth Korea threatens to shut down cryptocurrency exchanges ," December 28, 2017",14606.5,"$17,163.38 ",UP,6.84%"Bitcoin price hit all time high just below $20,000 "," December 19, 2017",19498.63,"$16,064.44 ",DOWN,17.61%CBOE Bitcoin Futures are launched ," December 11, 2017",16936.8,17010.53,UP,16.55%"Bitcoin price breaks $10,000 for the first time "," November 28, 2017",10058.8,"$15,455.75 ",UP,59.89%SegWit2X Cancelled ," November 14, 2017",7143.47,"$7,844.44 ",UP,9.81%CME announces to launch Bitcoin futures ," November 4, 2017",7379.95,"$7,255.21 ",UP,18.51%Bitcoin Hardfork: Bitcoin Gold goes live ," October 25, 2017",5682.85,"$7,261.41 ",UP,27.78%"Bitcoin price breaks $5,000 for the first time "," October 13, 2017",5647,"$5,943.06 ",UP,15.89%China Is Shutting Down All Bitcoin and Cryptocurrency Exchanges ," September 15, 2017",3606.08,"$3,714.44 ",UP,3.00%China bans companies from raising money through ICOs ," September 3, 2017",4668.5,"$4,223.82 ",DOWN,9.53%"Bitcoin ""splits"" into Bitcoin (BTC) and Bitcoin Cash (BCH)"," August 1, 2017",2787.85,"$3,383.79 ",UP,21.38%Japan declares Bitcoin as legal tender ," April 16, 2017",1085.03,"$1,215.69 ",UP,12.04%SEC denies second Bitcoin ETF application ," March 28, 2017",1044.25,"$1,190.39 ",UP,13.99%SEC denies Winkelvos ETF ," March 10, 2017",1201.86,"$1,037.85 ",DOWN,13.65%

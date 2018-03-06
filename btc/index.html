@@ -1,39 +1,105 @@
 <!DOCTYPE HTML>
 <html>
+  <title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Saira+Condensed" rel="stylesheet">
+  </title>
   <body>
   <style>
-    svg { border: solid #ccc 1px; }
+    .svg { border: solid #ccc 1px; }
+    .line {fill:none;}
+    .yAxis line{ stroke:rgb(183, 166, 118);}
+    .yAxis text{ fill:rgb(183, 166, 118);}
+
+    .yAxis path{ stroke: rgb(183, 166, 118);}
+    .priceAxis line{ stroke:rgb(211, 115, 66);}
+    .priceAxis text{ fill:rgb(211, 115, 66);}
+    .priceAxis path{ stroke: rgb(211, 115, 66);}
+    .searchAxis line{ stroke:rgb(230, 190, 31);}
+    .searchAxis text{ fill:rgb(230, 190, 31);}
+    .searchAxis path{ stroke: rgb(230, 190, 31);}
+
+    .mainTitle text {
+      font-family: font-family: 'Roboto', sans-serif;
+
+    }
+
+    body{
+      background-color: rgb(22, 69, 122);
+      font-family: 'Roboto', sans-serif;
+
+    }
+
+    svg {
+      display: block;
+      margin: auto;
+    }
+
+    .
   </style>
     <p id="p1">
       <script src="https://d3js.org/d3.v4.min.js"></script>
       <script src="https://d3js.org/topojson.v2.min.js"></script>
-
-<!--         ////%%%%%%%%%%%%%%%%% <BLS CHANGE> %%%%%%%%%%%%%%
- -->
-      <svg height="1200" width="1000" id="graph1"> </svg>
+      <svg height="1400" width="1350" id="graph1"> </svg>
       <script> 
-      var svg = d3.select("#graph1");
+
+      // title and subtitle text
+
+       // titles and Axis labels
+      var svg = d3.select("#graph1").style("background-color", "rgb(22, 69, 122)" );
+
+      svg.append("text") // Main title
+          .text("How Susceptible was Bitcoin to Government Regulation in 2017?")
+          .style("font-size", "40px")
+          .style("fill", "rgb(183, 166, 118)")
+          .attr("x", "90")
+          .attr("y","70");
+
+      svg.append("text") // Subtitle title1
+          .text("Bitcoin appears resilient to federal regulations, as its price changes are for the most part unaffected.")
+          .style("font-size", "26px")
+          .style("fill", "rgb(183, 166, 118)")
+          .attr("x", "90")
+          .attr("y","115")
+          .attr("width", "100px");
+
+
+      svg.append("text") // Price Axis Label
+          .text("Bitcoin Price")
+          .style("fill", "rgb(211, 115, 66)")
+          .style("font-size", "20px")
+          .attr("x", "640")
+          .attr("y","270");
+
+      svg.append("text") // Search Axis Label
+          .text("Google Search Popularity")
+          .style("fill", "rgb(230, 190, 31)")
+          .style("font-size", "20px")
+          .attr("x", "640")
+          .attr("y","300");
+
+
+
       var min = new Date(2017,0,15);
       var max = new Date(2018,1,18);
       var headlineData;
 
       var datescale = d3.scaleTime() // DATES
         .domain([min, max])
-        .range([100, 1200-50]); 
+        .range([300, 1400-50]); 
       var priceScale = d3.scaleLinear() // SEARCHES
         .domain([0, 20000])
-        .range([50,600-50]); 
+        .range([100,650-50]); 
       var searchScale = d3.scaleLinear() // PRICES
         .domain([0, 100])
-        .range([50, 600-50]); 
+        .range([100, 650-50]); 
 
       var parseTime = d3.timeParse("%Y-%m-%d");
       var parseTime2 = d3.timeParse(" %B %d, %Y");
 
-      var linegen = d3.line() // PRICES (blue)
+      var linegen = d3.line() // PRICES 
             .y(function(d) {return datescale(parseTime(d.date)); })
             .x(function(d) {return priceScale(d.close); })
-      var linegen2 = d3.line() // SEARCHES (red)
+      var linegen2 = d3.line() // SEARCHES
             .y(function(d) {return datescale(parseTime(d.week)); })
             .x(function(d) {return searchScale(d.priority); })
       d3.csv("at.csv", function(d) {
@@ -41,33 +107,43 @@
         var priceAxis = d3.axisTop(priceScale); // PRICES
         var searchAxis = d3.axisTop(searchScale); // SEARCHES
       svg.append("g")
-        .classed('x axis', true) // previously ".classed('x axis', true)"
+        .classed('x axis', true)
         .call(priceAxis)
-        .attr('transform', 'translate(0, 70)');
+        .attr('transform', 'translate(0, 270)')
+        .attr("class","priceAxis")
+        .style("font-size", "15px") // PRICE axis
       svg.append("g")
-        .classed('x axis', true) // previously ".classed('y axis', true)"
+        .classed('x axis', true)
+        .attr("class", "searchAxis")
         .call(searchAxis)
-        .attr('transform', 'translate(0, 100)'); // SEARCHES
+        .attr('transform', 'translate(0, 300)')
+        .attr("class", "searchAxis")
+        .style("font-size", "15px"); // SEARCH axis
       svg.append("path")
         .attr("d", linegen(d)) // PRICE
-        .attr("stroke","blue")
-        .attr("fill","none")
-        .attr("stroke-width","2px");
+        .attr("stroke","rgb(211, 115, 66)")//price line
+        .attr("stroke-width","3px")
+        .attr("fill", "none")
+        .attr("class", "searchAxis");
         });
 
     d3.csv("multiTimeline.csv", function(d) { // SEARCHES
       var dateAxis = d3.axisLeft(datescale); // DATES
         svg.append("path")
         .attr("d", linegen2(d))
-        .attr("stroke","red")
+        .attr("stroke","rgb(249, 212, 57)") //search Path
+        .attr("stroke-opacity","0.6")
         .attr("fill","none")
-        .attr("stroke-width","5px");
+        .attr("stroke-width","5px")
       svg.append("g")
-        .classed('y axis', true)
+        //.classed('y axis', true)
         .call(dateAxis)
-        .attr('transform', 'translate(50, 0)');
+        .attr('transform', 'translate(100, 0)')
+        .attr("class","yAxis")
+        //.style("stroke", "rgb(210, 199, 185)")
+        .style("font-size", "18px");
+
         
-  ////%%%%%%%%%%%%%%%%% </BLS CHANGE> %%%%%%%%%%%%%%
         d3.csv("btc_reduced.csv", function(data){
           headlineData = data;
           showText();
@@ -79,32 +155,34 @@
         headlineData.forEach(function (d) {
           console.log(d.EventName);
           console.log(parseTime2(d.Date));
-
+          var color;
+          if (d.UpDownUnChanged == "UP"){
+            color = 'rgb(48, 198, 81)'
+          }
+          else{
+            color = 'red'
+          }
           svg.append("text").text(d.EventName)
-            .attr("x", 630)
+            .attr("x", 700)
             .attr("y", datescale(parseTime2(d.Date)))
-            .attr("font-size", "10px")
-            .attr("fill", "black");
+            .attr("font-size", "20px")
+            .attr("fill", "rgb(183, 166, 118)") //headline color
 
             svg.append("text").text(d.PercChange)
-            .attr("x", 560)
+            .attr("x", 610)
             .attr("y", datescale(parseTime2(d.Date)))
-            .attr("font-size", "10px")
-            .attr("fill", "black");
+            .attr("font-size", "24px")
+            .attr("fill", color); //percent change color
 
-            svg.append("text").text(d.UpDownUnChanged)
-            .attr("x", 595)
-            .attr("y", datescale(parseTime2(d.Date)))
-            .attr("font-size", "10px")
-            .attr("fill", "black");
 
           svg.append("line")
                .attr("x1", priceScale(d.PriceOnDate))
                .attr("y1", datescale(parseTime2(d.Date)))
-               .attr("x2", 550)
+               .attr("x2", 600)
                .attr("y2", datescale(parseTime2(d.Date)))
-               .attr("stroke-width", 0.5)
-               .attr("stroke", "black");
+               .attr("stroke-width", 1)
+               .attr("stroke-dasharray","0.9")
+               .attr("stroke", " rgb(211, 115, 66)");//text line color
 
 
           });

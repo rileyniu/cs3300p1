@@ -86,10 +86,16 @@
             .attr("font-size", "10px")
             .attr("fill", "black");
 
+            svg.append("text").text(d.PercChange)
+            .attr("x", 560)
+            .attr("y", datescale(parseTime2(d.Date)))
+            .attr("font-size", "10px")
+            .attr("fill", "black");
+
           svg.append("line")
                .attr("x1", 70)
                .attr("y1", datescale(parseTime2(d.Date)))
-               .attr("x2", 570)
+               .attr("x2", 550)
                .attr("y2", datescale(parseTime2(d.Date)))
                .attr("stroke-width", 0.5)
                .attr("stroke", "black");

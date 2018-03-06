@@ -81,7 +81,7 @@
           console.log(parseTime2(d.Date));
 
           svg.append("text").text(d.EventName)
-            .attr("x", 600)
+            .attr("x", 630)
             .attr("y", datescale(parseTime2(d.Date)))
             .attr("font-size", "10px")
             .attr("fill", "black");
@@ -92,8 +92,14 @@
             .attr("font-size", "10px")
             .attr("fill", "black");
 
+            svg.append("text").text(d.UpDownUnChanged)
+            .attr("x", 595)
+            .attr("y", datescale(parseTime2(d.Date)))
+            .attr("font-size", "10px")
+            .attr("fill", "black");
+
           svg.append("line")
-               .attr("x1", 70)
+               .attr("x1", priceScale(d.PriceOnDate))
                .attr("y1", datescale(parseTime2(d.Date)))
                .attr("x2", 550)
                .attr("y2", datescale(parseTime2(d.Date)))

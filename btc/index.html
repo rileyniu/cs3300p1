@@ -10,11 +10,12 @@
 
 <!--         ////%%%%%%%%%%%%%%%%% <BLS CHANGE> %%%%%%%%%%%%%%
  -->
-      <svg height="1200" width="800" id="graph1"> </svg>
+      <svg height="1200" width="1000" id="graph1"> </svg>
       <script> 
       var svg = d3.select("#graph1");
       var min = new Date(2017,0,15);
       var max = new Date(2018,1,18);
+      var headlineData;
 
       var datescale = d3.scaleTime() // DATES
         .domain([min, max])
@@ -25,7 +26,10 @@
       var searchScale = d3.scaleLinear() // PRICES
         .domain([0, 100])
         .range([50, 600-50]); 
+
       var parseTime = d3.timeParse("%Y-%m-%d");
+      var parseTime2 = d3.timeParse(" %B %d, %Y");
+
       var linegen = d3.line() // PRICES (blue)
             .y(function(d) {return datescale(parseTime(d.date)); })
             .x(function(d) {return priceScale(d.close); })
@@ -50,6 +54,7 @@
         .attr("fill","none")
         .attr("stroke-width","2px");
         });
+
     d3.csv("multiTimeline.csv", function(d) { // SEARCHES
       var dateAxis = d3.axisLeft(datescale); // DATES
         svg.append("path")
@@ -63,6 +68,36 @@
         .attr('transform', 'translate(50, 0)');
         
   ////%%%%%%%%%%%%%%%%% </BLS CHANGE> %%%%%%%%%%%%%%
+        d3.csv("btc_reduced.csv", function(data){
+          headlineData = data;
+          showText();
+        });
+
+
+
+      function showText(){
+        headlineData.forEach(function (d) {
+          console.log(d.EventName);
+          console.log(parseTime2(d.Date));
+
+          svg.append("text").text(d.EventName)
+            .attr("x", 600)
+            .attr("y", datescale(parseTime2(d.Date)))
+            .attr("font-size", "10px")
+            .attr("fill", "black");
+
+          svg.append("line")
+               .attr("x1", 70)
+               .attr("y1", datescale(parseTime2(d.Date)))
+               .attr("x2", 570)
+               .attr("y2", datescale(parseTime2(d.Date)))
+               .attr("stroke-width", 0.5)
+               .attr("stroke", "black");
+
+
+          });
+
+      }
 
     });
 
